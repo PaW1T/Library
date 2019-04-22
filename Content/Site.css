@@ -1,0 +1,500 @@
+﻿body {
+    padding-bottom: 20px;
+    background-color: #f8ead7;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAABlBMVEX///+pqalTpKl9AAAAAnRSTlMAGovxNEIAAAAdSURBVDjLY2AAAUaG4UYxDDsfjfp91O+jfqfE7wCzpQCw/dq+qQAAAABJRU5ErkJggg==");
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.blur {
+}
+
+.blur:hover {
+}
+
+a.disabled {
+    pointer-events: none; /* делаем ссылку некликабельной */
+    cursor: default;  /* устанавливаем курсор в виде стрелки */
+    color: #999; /* цвет текста для нективной ссылки */
+}
+
+h1 {
+    font-size: 25px;
+}
+
+.header{
+    text-align: center;
+}
+
+h2 {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    color: #666;
+}
+
+h3 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+h2 a {
+    color: #444;
+    text-decoration: underline;
+    text-shadow: 1px 1px 0 #E5D4C0;
+}
+
+h2 a:hover, h2 a:visited:hover {
+    color: #777;
+    text-decoration: none;
+}
+
+h2 a:visited {
+    color: #8d7054;
+}
+
+.library-index{
+    display: block;
+    text-align: center;
+    text-shadow: 4px 2px 0 #E5D4C0;
+    color: #5c3f12
+}
+
+.btn-danger{
+    background-image: none !important;
+    background-color: #c76e66 !important;
+    border-color: #551d0b !important;
+}
+
+.btn-success{
+    background-image: none;
+    background-color: #f6ac75 !important;
+    border-color: #c79b81 !important;
+    color: #222 !important;
+    box-shadow: rgba(0,0,0,0.4) 1px 2px 2px;
+    border-radius: 5px !important;
+    outline: none !important;
+}
+
+.caret{
+    border-top-color: #222 !important;
+}
+
+.btn-success:hover{
+    background: #dd724e !important;
+    border-color: #dd724e !important;
+}
+
+.file-upload {
+    position: relative;
+    overflow: hidden;
+}
+
+.upload{ 
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+}
+
+a.disabled{
+    color: #999 !important;
+}
+
+.view{
+    position: relative;
+    background-color: rgba(241, 196, 15, 0.1);
+    box-shadow: 0 0 3px #ccc;
+    border-radius: 5px;
+    padding-bottom: 30px;
+    padding-top: 15px;
+    width: 70%; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.view h3{
+    margin-left: 40%;
+    margin-bottom: 20px;
+}
+
+.publisher{
+    position: relative;
+    margin-left: 10px;
+    font-size: 25px;
+}
+
+nav{
+    height: 80px;
+    background-color: #f6d082;
+    box-shadow: 0 0 5px 0 #333;
+}
+
+nav a{
+    position: relative;
+    display: block;
+    margin-top: 20px;
+}
+
+nav .btn-success{
+    margin-left: 3px;
+}
+
+.mini-box .item{
+    display: block;
+    margin-left: 20%;
+    margin-right: auto;
+}
+
+.mini-box .title{
+    display: block;
+}
+
+.title h2 a{
+    display: block;
+    height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.logging {
+    position:relative;
+    width: 80px;
+}
+
+.searchBox{
+    max-width: 800px;
+    width: 40%;
+    height: 30px;
+
+    background: #fefbf6;
+    border: 1px solid #c28157;
+    font-size: 20px;
+    color: #222;
+    padding-left: 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px !important;
+    position: relative;
+    margin-left: 5px;
+    margin-right: 3px;
+    top: 13px;
+}
+
+.searchBox:focus{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px !important;
+    outline: none;
+}
+
+.icon {
+    position: absolute;
+    top: 7px;
+    left: 20px;
+    width: 64px;
+    height: 64px;
+    content: '';
+    background: url(/Content/books78.png);
+    background-repeat: no-repeat;
+}
+
+.logo{
+    margin-top: 0px;
+    min-width: 64px;
+}
+
+.input-field, .dropdown{
+    position: relative;
+    top: 0px; 
+    background: #fefbf6;
+    border: 1px solid #e1b9ac;
+    font-size: 15px;
+    border-radius: 5px;
+    padding-left: 7px;
+    float: right;
+    width: 200px;
+    height: 26px;
+    margin-top: 0px;
+}
+
+label{
+    font-weight: normal;
+    font-size: 17px;
+    text-align: center;
+    display: block;
+}
+
+h2{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    color: #111;
+    text-shadow: 1px 1px 1px rgba(99, 99, 99, 0.4);
+}
+
+.login-password .view{
+    padding-top: 10px;
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+.editor-field{
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2px;
+}
+
+.checkbox {
+    position: relative;
+    top: 0px; 
+    background: #fefbf6;
+    border: 1px solid #e1b9ac;
+    font-size: 15px;
+    border-radius: 5px;
+    padding-left: 7px;
+    float: right;
+    width: 200px;
+    height: 20px;
+    margin-top: 0px;
+}
+
+.file-upload{
+    float: left;
+    clear: both;
+    left: 66%;
+}
+
+.file-upload, input[type = submit]{
+    display: block;
+    max-width: 100px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.delete-book{
+    display: block;
+    max-width: 100px;
+    margin-top: 10px;
+    margin-left: 41%;
+    margin-right: auto;
+}
+
+.admin{
+    padding-top: 20px;
+}
+
+.admin div {
+    width: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.record-field{
+    display: block;
+    margin-top: 16px;
+}
+
+.modal {
+    position: fixed;
+    top: 10%;
+    right: 30%;
+    bottom: 0;
+    left: 30%;
+    z-index: 1040;
+    display: none;
+    overflow: auto;
+    overflow-y: auto;
+}
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 !important;
+}
+
+.dropdown-menu ul, select option {
+    margin: 0;
+    background-color: antiquewhite;
+}
+.dropdown-menu li:hover, .dropdown-menu a:hover, .search-button-item:hover{
+    background-image: none !important;
+    background-color: #dd724e !important;
+}
+
+.dropdown-menu a{
+    margin: 0;
+    text-align: center;
+}
+
+.dropdown-toggle, select{
+    display: block;
+    margin-top: 20px;
+}
+
+nav input[type="submit"]{
+    display: inline;
+    margin-top: 20px;
+}
+
+.publisher-edit {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* The CSS */
+select {
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    color:#888;
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+}
+
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {padding-right:18px}
+}
+
+label {position:relative}
+label:after {
+    content:'<>';
+    font:11px "Consolas", monospace;
+    color:#aaa;
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+    right:8px; top:2px;
+    padding:0 0 2px;
+    border-bottom:1px solid #ddd;
+    position:absolute;
+    pointer-events:none;
+}
+label:before {
+    content:'';
+    right:6px; top:0px;
+    width:20px; height:20px;
+    background:#f8f8f8;
+    position:absolute;
+    pointer-events:none;
+    display:block;
+}
+*/
+
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+@media (min-width: 768px) {
+.col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+.hidden-books{
+    display: none;
+}
+
+select{
+    min-width: 300px;
+}
+
+#CardId{
+    margin-top: 0;
+}
+
+#BookId {
+    position: relative;
+    top: -20px;
+}
+.cont-book{
+    position: relative;
+}
