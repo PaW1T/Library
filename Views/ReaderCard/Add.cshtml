@@ -1,0 +1,79 @@
+﻿@model Library.Models.ReadersCard
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Додати читача</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.Label("Ім'я", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Прізвище", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Surname)
+                @Html.ValidationMessageFor(model => model.Surname)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("По-батькові", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SecondName)
+                @Html.ValidationMessageFor(model => model.SecondName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Місто", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City)
+                @Html.ValidationMessageFor(model => model.City)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Телефон", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Phone)
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Дата народження", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BirthDate)
+                @Html.ValidationMessageFor(model => model.BirthDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Місце роботи", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Position)
+                @Html.ValidationMessageFor(model => model.Position)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Додати" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

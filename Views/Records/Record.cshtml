@@ -1,0 +1,86 @@
+﻿@model Library.Models.Record
+
+<h2>Информация о книге</h2>
+<div class="container view">
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <h3>Название:</h3>
+        </div>
+        <div class="col-md-9 col-sm-9 record-field">
+            @Ajax.ActionLink(Model.RecordName, "Modal", "Records", new { id = Model.RecordId }, new AjaxOptions { UpdateTargetId = "container" }, new { data_toggle = "modal", data_target = "#myModal" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <h3>Описание:</h3>
+        </div>
+        <div class="col-md-9 col-sm-9 record-field">
+            @Html.DisplayFor(model => model.RecordDescription)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <h3>Автор:</h3>
+        </div>
+        <div class="col-md-9 col-sm-9 record-field">
+            @Html.DisplayFor(model => model.AuthorName)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <h3>ISBN:</h3>
+        </div>
+        <div class="col-md-9 col-sm-9 record-field">
+            @Html.DisplayFor(model => model.ISBN)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <h3>Дата создания:</h3>
+        </div>
+        <div class="col-md-9 col-sm-9 record-field">
+            @Html.DisplayFor(model => model.CreationDate)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <h3>Количество страниц:</h3>
+        </div>
+        <div class="col-md-9 col-sm-9 record-field">
+            @Html.DisplayFor(model => model.NumberOfPages)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <h3>Аннотация:</h3>
+        </div>
+        <div class="col-md-9 col-sm-9 record-field">
+            @Html.DisplayFor(model => model.Annotation)
+        </div>
+    </div>
+    <div class="row">
+            @if (File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", Model.ISBN + ".pdf")) ||
+                                File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", Model.ISBN + ".djvu")) ||
+                                File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", Model.ISBN + ".mp3")) ||
+                                File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", Model.ISBN + ".mp4")) ||
+                                File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", Model.ISBN + ".txt")))
+            {
+            <div class="col-md-3 col-sm-3">
+                @Html.ActionLink("Скачать", "downloadFile", "Records", new { id = Model.RecordId }, new { @class = "btn btn-success" })
+            </div>
+        }
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div id="container">
+        </div>
+    </div>
+</div>

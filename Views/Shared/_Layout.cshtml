@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Физтех-библиотека</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <nav>
+        <div class="row">
+            <div class="col-lg-2 col-sm-2 col-md-2">
+                <a href="~/Records/Index" class="logo">
+                    <div class="icon">
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-sm-3 col-md-3">
+                @Html.ActionLink("Книги", "Index", "Records", null, new { @class = "btn btn-success" })
+                @Html.ActionLink("Издатели", "Index", "Publishers", null, new { @class = "btn btn-success" })
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Читатели", "AllCards", "ReaderCard", null, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Новый заказ", "CreateOrder", "Order", null, new { @class = "btn btn-success" })
+                }
+
+
+            </div>
+
+            <div class="col-lg-6 col-sm-6 col-md-6">
+                @{Html.BeginForm("Index", "Records", FormMethod.Get, new { @class = "search" });}
+                @Html.DropDownList("search-button", new SelectList(new @List<Object> { "По книгам", "По авторам", "По издателям", "По ISBN" }, Request["search-button"]), new { @class = "btn btn-success" })
+                @Html.TextBox("find", null, new { @class = "searchBox", placeholder = "Поиск" })
+                <input type="submit" class="btn btn-success" value="Найти" />
+                @{Html.EndForm();}
+            </div>
+        </div>
+    </nav>
+    @RenderBody()
+    <hr>
+    <footer>
+        <div class="col-sm-offset-8 col-sm-2  buttons">
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.AntiForgeryToken();
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Управление <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+
+                    <li><a href="/Records/Add">Добавить книгу</a></li>
+                    <li><a href="/ReaderCard/Add">Добавить читателя</a></li>
+                    <li><a href="/Admin/LogOff">Выйти</a></li>
+                </ul>
+            }
+            else
+            {
+                @Html.ActionLink("Войти", "Login", "Admin", null, new { @class = "btn btn-success logging" });
+            }
+        </div>
+    </footer>
+    <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/application.js"></script>
+</body>
+</html>

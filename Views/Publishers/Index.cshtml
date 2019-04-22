@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Список издательств";
+}
+
+@model IEnumerable<Library.Models.Publisher>
+<div>
+    <h1 class="library-index">
+        Список издателей
+    </h1>
+</div>
+
+<div class="container view">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 col-sm-6">
+                <div class="mini-box item">
+                    <h2>
+                        @Html.ActionLink(item.PublisherName, "Publisher", "Publishers", new { id = item.PublisherId }, null)
+                    </h2>
+                </div>
+                <div class="mini-box item">
+                    <h4 class="header">@Html.DisplayFor(modelItem => item.Email)</h4>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+

@@ -1,0 +1,159 @@
+﻿@model List<Library.Models.Record>
+@helper DisplayBooks(bool recommended, int size)
+{
+    <div class="container view">
+        <div class="row">
+            @{int counter = 0;
+            }
+            @foreach (var item in Model)
+            {
+                if (!(item.Recomended ^ recommended))
+                {
+                    counter += 1;
+                    <div class="col-md-15">
+                        <div class="mini-box item title">
+                            <h2>
+                                @Html.ActionLink(item.RecordName, "Record", "Records", new { id = item.RecordId }, null)
+                            </h2>
+                        </div>
+                        <div class="mini-box item title">
+                            <h4>
+                                @Html.DisplayFor(modelItem => item.AuthorName)
+                            </h4>
+                        </div>
+
+
+                        <div class="mini-box item">
+                            <a href=@Url.Action("Record/" + item.RecordId, "Records")>
+                                @{var path = "/Data/" + item.ISBN + ".png";}
+                                @if (File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", item.ISBN + ".png")))
+                                {
+                                    <img src="@path" width="100%" />
+                                }
+                                else
+                                {
+                                    <img src="~/Data/default.jpg" width="100%" />
+                                }
+                            </a>
+
+                            <p><h5>@Html.DisplayFor(modelItem => item.RecordDescription)</h5></p>
+                            @if (File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", item.ISBN + ".pdf")) ||
+            File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", item.ISBN + ".djvu")) ||
+            File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", item.ISBN + ".txt")))
+                            {
+                                @Html.ActionLink("Скачать", "downloadFile", "Records", new { id = item.RecordId }, new { @class = "btn btn-success" });
+                            }
+
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Редактировать", "Edit", "Records", new { id = item.RecordId }, new { @class = "btn btn-success" })
+                            }
+                        </div>
+                    </div>
+                                        }
+                                        if (counter == size) { break; }
+                                    }
+        </div>
+    </div>
+}
+
+@helper DisplayBooksInAmount(int count)
+{
+    <div class="container view">
+        <div class="row">
+            @foreach (var item in Model.Take(count))
+            {
+                {
+                    <div class="col-md-15">
+                        <div class="mini-box item title">
+                            <h2>
+                                @Html.ActionLink(item.RecordName, "Record", "Records", new { id = item.RecordId }, null)
+                            </h2>
+                        </div>
+                        <div class="mini-box item title">
+                            <h4>
+                                @Html.DisplayFor(modelItem => item.AuthorName)
+                            </h4>
+                        </div>
+
+                        <div class="mini-box item">
+                            <a href=@Url.Action("Record/" + item.RecordId, "Records")>
+                                @{var path = "/Data/" + item.ISBN + ".png";}
+                                @if (File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", item.ISBN + ".png")))
+                                {
+                                    <img src="@path" width="100%" />
+                                }
+                                else
+                                {
+                                    <img src="~/Data/default.jpg" width="100%" />
+                                }
+                            </a>
+
+                            <p><h5>@Html.DisplayFor(modelItem => item.RecordDescription)</h5></p>
+                            @if (File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", item.ISBN + ".pdf")) ||
+            File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", item.ISBN + ".djvu")) ||
+            File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", item.ISBN + ".mp3")) ||
+            File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", item.ISBN + ".mp4")) ||
+            File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Data/", item.ISBN + ".txt")))
+                            {
+                                @Html.ActionLink("Скачать", "downloadFile", "Records", new { id = item.RecordId }, new { @class = "btn btn-success" });
+                            }
+
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Редактировать", "Edit", "Records", new { id = item.RecordId }, new { @class = "btn btn-success" })
+                            }
+                        </div>
+                    </div>
+                                        }
+                                    }
+        </div>
+    </div>
+}
+
+<div>
+    <h1 class="library-index">
+        Здесь собраны все книги нашей библиотеки
+    </h1>
+</div>
+
+@if (Request["find"].IsEmpty())
+{
+    <h2>Недавно добавленные:</h2>
+    @DisplayBooksInAmount(5)
+    <h2>Избранные книги:</h2>
+
+    <div class="5books">
+        @DisplayBooks(true, 5)
+    </div>
+    <div class="allbooks" style="display:none">
+        @DisplayBooks(true, @Model.Count)
+    </div>
+
+    <h2>Коллекция:</h2>
+
+    <div class="5books">
+        @DisplayBooks(false, 5)
+    </div>
+    <div class="allbooks" style="display:none">
+        @DisplayBooks(false, @Model.Count)
+    </div>
+    <input id="showall" type="submit" class="btn btn-success" value="Показать" />
+}
+else
+{
+    <h2>Коллекция:</h2>
+    @DisplayBooksInAmount(Model.Count)
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $("#showall").click(function () {
+        $(".5books").hide();
+        $(".allbooks").show();
+        $("#showall").hide();
+    });
+</script>

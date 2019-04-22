@@ -1,0 +1,15 @@
+﻿
+@model Library.Models.AdminLoginModel
+@{
+    ViewBag.Title = "Админка";
+}
+
+<h2> Управление библиотекой </h2>
+<div class="view admin">
+    <div align="center">
+        @Html.ActionLink("Добавить новую книгу", "Add", "Records", null, new { @class = "btn btn-success" }) 
+    </div>
+    <div align="center">
+        @Html.ActionLink("Просмотр издателей", "Index", "Publishers", null, new { @class = "btn btn-success" })
+    </div>
+</div>

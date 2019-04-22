@@ -1,0 +1,116 @@
+﻿@model Library.Models.AdminAddEditModel
+@{
+    ViewBag.Title = "Добавить книгу";
+}
+
+<h2>Добавление новой книги</h2>
+<div class="container view">
+    @{Html.BeginForm("Add", "Records", FormMethod.Post, new { enctype = "multipart/form-data" });}
+    <fieldset>
+        @Html.ValidationSummary(true)
+        <div class="editor-field">
+            <label>
+                Название*
+                @Html.TextBoxFor(model => model.RecordName, new { @class = "input-field" })
+            </label>
+            @Html.ValidationMessageFor(model => model.RecordName, " ")
+        </div>
+        <div class="editor-field">
+            <label>
+                Описание
+                @Html.TextBoxFor(model => model.RecordDescription, new { @class = "input-field" })
+            </label>
+            @Html.ValidationMessageFor(model => model.RecordDescription, " ")
+        </div>
+        <div class="editor-field">
+            <label>
+                Автор*
+                @Html.TextBoxFor(model => model.RecordAuthor, new { @class = "input-field" })
+            </label>
+            @Html.ValidationMessageFor(model => model.RecordAuthor, " ")
+        </div>
+        <div class="editor-field">
+            <label>
+                ISBN*
+                @Html.TextBoxFor(model => model.ISBN, new { @class = "input-field" })
+            </label>
+            @Html.ValidationMessageFor(model => model.ISBN, " ")
+        </div>
+        <div class="editor-field">
+            <label>
+                Дата создания
+                @Html.TextBoxFor(model => model.CreationDate, new { @class = "input-field", @type = "date" })
+            </label>
+            @Html.ValidationMessageFor(model => model.CreationDate, " ")
+        </div>
+        <div class="editor-field">
+            <label>
+                Кол-во страниц
+                @Html.TextBoxFor(model => model.NumberOfPages, new { @class = "input-field" })
+            </label>
+            @Html.ValidationMessageFor(model => model.NumberOfPages, " ")
+        </div>
+        <div class="editor-field">
+            <label>
+                Аннотация
+                @Html.TextBoxFor(model => model.Annotation, new { @class = "input-field" })
+            </label>
+            @Html.ValidationMessageFor(model => model.Annotation, " ")
+        </div>
+        <div class="editor-field">
+            <label>
+                Избранное
+                @Html.CheckBoxFor(model => model.Recomended, new { @class = "checkbox" })
+            </label>
+            @Html.ValidationMessageFor(model => model.Recomended, " ")
+        </div>
+        <div class="editor-field">
+            <label>
+                Издательство
+                @Html.DropDownListFor(model => model.PublisherId, Model.Publishers, "Новое издательство:", new { @class = "dropdown" })
+            </label>
+            @Html.ValidationMessageFor(model => model.Publishers, " ")
+        </div>
+        <div id="newPublisher">
+            <div>
+                <br>
+                <h3>Новое издательство:</h3>
+            </div>
+            <div class="editor-field">
+                <label>
+                    Название*
+                    @Html.TextBoxFor(model => model.PublisherName, new { @class = "input-field" })
+                </label>
+                @Html.ValidationMessageFor(model => model.PublisherName, " ")
+            </div>
+            <div class="editor-field">
+                <label>
+                    Адрес
+                    @Html.TextBoxFor(model => model.PublisherAddress, new { @class = "input-field" })
+                </label>
+                @Html.ValidationMessageFor(model => model.PublisherAddress, " ")
+            </div>
+            <div class="editor-field">
+                <label>
+                    Телефон
+                    @Html.TextBoxFor(model => model.PublisherNumber, new { @class = "input-field" })
+                </label>
+                @Html.ValidationMessageFor(model => model.PublisherNumber, " ")
+            </div>
+            <div class="editor-field">
+                <label>
+                    Email
+                    @Html.TextBoxFor(model => model.PublisherEmail, new { @class = "input-field" })
+                </label>
+                @Html.ValidationMessageFor(model => model.PublisherEmail, " ")
+            </div>
+        </div>
+            <label id="test"></label>
+            <div class="btn btn-success file-upload">
+                <span>Файл</span>
+                <input type="file" name="fileUpload" class="upload" />
+            </div>
+            <input type="submit" value="Отправить" class="btn btn-success" />
+    </fieldset>
+    @{Html.EndForm();}
+</div>
